@@ -1,0 +1,52 @@
+extends ../../../views/_base
+
+block header
+	include ../../../views/_header.html
+block content
+
+	div.text-center
+		h2.title Bievenido a Paris
+		h4.subtitle Sino llueve, hace frio. Pero tengo bici.
+	
+	div.text-left
+		ul.articles
+			li.article
+				p.
+					<h3 class="title"> Stage I </h3>
+
+					Ya va a hacer casi un mes que estoy en Paris. Los dias pasan que no me doy cuenta. 
+					
+					<br>
+					
+					La primeras dos tareas al pisar estas tierras era conseguir una bici y sacar el estatus de auto-enterprendeur.
+					
+					<img class="img-responsive vspacing-2" src='./bike.jpg'/>
+					
+					La bici vuela. La consegui a un precio super interesante en le bon coin, debo decir que la compra salio muy bien. Esta oxidada y las llantas estan bastante gastadas. Ya pinche la camara una vez y tuve que pagar doce euros por una nueva, parece que aca no conocen los parches para las camaras. No me quisieron vender. O no me habran entendido, una de dos.
+					<br>
+					En cuanto al segundo punto, el siret va en camino, gracias a Ma fuimos a la Urssaf que es el centro para tramitar el estatus. El proximo paso en febrero sera facturar algo. Cruzo los dedos.
+					
+					<img class="img-responsive vspacing-2 center-block" src='./siret.jpg'/>
+					
+			li.article.text-right
+				em Escrito el!{post.date} por !{post.author}
+
+	div#disqus_thread
+	script
+		|var disqus_shortname = 'misitioba';
+		|var disqus_url = '!{"http://misitioba.com/blog/posts/"+locals.post.url}';
+		|(function(){
+		|var dsq = document.createElement('script');
+		|dsq.type = 'text/javascript';
+		|dsq.async=true;
+		|var url  = '//' + disqus_shortname + '.disqus.com/';
+		if post.comments
+			|url += 'embed.js';
+		else
+			|url += 'count.js';
+		|dsq.src= url;
+		| (document.querySelector('head') || document.querySelector('body')).appendChild(dsq);
+		|})();
+
+	include ../../_back-to-blog
+	include ../../_latest-posts

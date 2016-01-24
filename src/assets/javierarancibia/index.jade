@@ -1,0 +1,241 @@
+extends ../views/_base
+
+block header
+	include ../views/_header.html
+block content
+
+	div.text-center
+		h2.title I'm Javier Arancibia
+		h4.subtitle Independent software developer
+
+		div
+			ul.inline
+				li.spacing-1 
+					a(href='https://www.facebook.com/misitioba/',target='blank')
+						<i class="fa fa-facebook"></i>
+				li.spacing-1
+					a(href='https://twitter.com/javimosch',target='blank')
+						<i class="fa fa-twitter"></i>
+				li.spacing-1
+					a(href='https://github.com/javimosch',target='blank')
+						<i class="fa fa-github"></i>
+				li.spacing-1
+					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank',alt='email me')
+						<i class="fa fa-pencil"></i>
+	
+	div.text-left
+		ul.articles
+			li.article
+				h3.title
+					|Currently, I just move in to Paris and I'm looking to join a startup.
+				p
+					| I moved here to gain working experience in France and learn french. I will be glad to help local entrepreneurs to achieve their goals thanks to the information technologies.
+
+			li.article
+				h3.title
+					| I made a bunch of sites early last year.
+				ul.items
+					li.item
+						a(href='http://colorbotanico.com/#/',taget='blank').title
+							|Color Botanico
+						|&nbsp;(Web) 
+						div
+							|3 Stars Hotel in Palermo, Buenos Aires, Argentina.
+						a(href='https://github.com/Quadramma/color-botanico',target='blank')
+							|source
+					li.item
+						a(href='http://www.gailuminacion.com/',target='blank').title
+							|GAIluminacion
+						|&nbsp;(Web)
+						div
+							|Import & Export of Lights devices.
+						a(href='https://github.com/Quadramma/Site.GAIluminacion',target='blank')
+							|source
+					li.item
+						a(href='https://www.clearfilm.com/',taget='blank').title
+							|Clear Film
+						|&nbsp;(Web)
+						div
+							|Auto Paint Protection film and personalization. In the beginning was a 'scroll parallax site'.
+					li.item
+						a(href='https://github.com/Quadramma/Site.Colpermin',target='blank').title
+							|Colpermin IBS
+						|&nbsp;(Android)
+						div
+							|Presentation mobile app for tablets.
+					li.item
+						a(href='https://github.com/Quadramma/Neutrogena',target='blank').title
+							|Neutrogena
+						|&nbsp;(Android)
+						div
+							|Presentation mobile app for tablets.
+					li.item
+						a(href='https://github.com/Quadramma/Winter',target='blank').title
+							|Winter Meds
+						|&nbsp;(Android)
+						div
+							|Presentation mobile app for tablets. Winter Meds Aids 2014.
+			li.article
+				h3.title
+					|Sometimes I have a job.
+				h4.subtitle
+					|I'm a programmer / analyst
+				div
+					| I have worked as a programmer for five years in 
+					a(href='http://www.clarity.com.ar',target='blank')
+						b Clarity S.A
+					|, a software factory which develops Clarity Health 
+					|and Clarity Flow
+					|, a versatil web based 
+					b ERP&nbsp;
+					|and rock solid 
+					|with presence in all |latinoamerica.
+				div
+					|When action calls, I fight the evil in 
+					a(href='http://www.quadramma.com',target='blank')
+						b Quadramma
+					|,a Digital Creative Agency based in Buenos Aires, Argentina.
+				div
+					| If a diversion is needed, I join a league of artists in La Plata, Buenos Aires, to create stunning games. We used to call us 
+					a(href='http://www.endigames.com',target='blank')
+						b Endigames
+			
+			li.article
+				h3.title
+					| I'm devoted to open source.
+				h4.subtitle
+					| Truly good things are free.
+				div
+					ul.repos.text-center
+						li
+							a(href='https://www.npmjs.com/~javiermosch',target='blank')
+								|npm
+						li
+							a(href='https://github.com/Quadramma',target='blank')
+								|github#1
+						li
+							a(href='https://github.com/javimosch',target='blank')
+								|github#2
+						li
+							a(href='https://gitlab.com/u/javimosch',target='blank')
+								|gitlab
+						li
+							a(href='https://bitbucket.org/javimosch/',target='blank')
+								|bitbucket
+			li.article
+				h3.title
+					| I also like creating proyects
+				h4.subtitle
+					| exploring an idea and expand it slowly.
+
+				include ../views/_projects
+
+			li.article
+				h3.title
+					|I'm not just a hacker.
+				h4.subtitle
+					|My tinkering has varying success.
+				div
+					a(href='https://en.wikipedia.org/wiki/Hacker_culture',target='blank') 
+						b Hacking 
+					|is not my fulltime activity. I'm a bit passionated about cuisine and travels and I made use of that. Exploring diferents cultures opened me to a bunch of opportunities. A lot of interest emerged for carpentry, electronics, bike mechanics, tiny houses, etc.
+					b I want and I will create, beyond digital. 
+
+
+			li.article
+				h3.title
+					| I think I know how the world works.
+				h4.subtitle
+					| Down-to-earth happiness.
+				div.list
+					|- There is 
+					b no absolute meaning 
+					|to life
+					div.list.child
+						|- You, and everything 
+						b you know and love ...
+						div.list.child
+							|- 
+							b exists by pure chance 
+							|, a serie of accidents.
+						div.list.child
+							|- are but an 
+							b insignificant fraction 
+							|of the universe.
+						div.list.child
+							|- will 
+							b cease to exists soon.
+				div.list
+					b - You choice what has meaning
+					|, you are free.
+				div.list
+					|- Everything you ever have is 
+					b here 
+					|and 
+					b now, cherish it.
+
+			li.article
+				h3.title I'm ready to hear your idea.
+				h4.subtitle cooperation just works.
+				div
+					b Some things I can help with:
+					div.list
+						div.list.child
+							|- brainstorming.
+						div.list.child
+							|- tech advisor.
+						div.list.child
+							|- soft analisys.
+						div.list.child
+							|- web development.
+						div.list.child
+							|- mobile software development.
+						div.list.child
+							|- share a mate, and make empanadas.
+				div
+					b Some profiles I would love to be better teached or to have a cooperation:
+					div.list
+						div.list.child
+							|- Mobile Developer .
+						div.list.child
+							|- Designer / UI/ UX.
+						div.list.child
+							|- Inbound Marketer.
+						div.list.child
+							|- Sales.
+
+			li.article
+				h3.title About this site
+				h4.subtitle technology choices.
+				div.list
+					div.list.child
+						|- Brunch.io (bundling and minification)
+					div.list.child
+						|- Jade (templating)
+					div.list.child
+						|- Stylus (css preprocessor)
+					div.list.child
+						|- gulp (dev server, live reloading)
+					div.list.child
+						|- vanilla javascript 
+
+	div.text-center
+		h4
+			a(href=self.root+'javierarancibia/cv-download',target='_self')
+				|view cv
+		
+
+		//div
+			ul.inline
+				li.spacing-1 
+					a(href='https://www.facebook.com/misitioba/',target='blank')
+						<i class="fa fa-facebook"></i>
+				li.spacing-1
+					a(href='https://twitter.com/javimosch',target='blank')
+						<i class="fa fa-twitter"></i>
+				li.spacing-1
+					a(href='https://github.com/javimosch',target='blank')
+						<i class="fa fa-github"></i>
+				li.spacing-1
+					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank')
+						<i class="fa fa-pencil"></i>

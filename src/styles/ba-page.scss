@@ -1,0 +1,94 @@
+body{
+	font-family: Fira Sans, sans-serif;
+}
+
+.intro{
+		/*font-family: 'Nixie One', cursive;*/
+		
+		background: white;
+		
+		
+	}
+	ul{
+		list-style: none;
+		
+		margin: 0 auto;
+		padding: 0px;
+	}
+	ul.items{
+		
+	}
+	.item a{
+		color: #2255cc;
+		font-weight: 400;
+	}
+	.item a:hover{
+		font-weight: 300;
+	}
+	.item{
+		margin: 5px;
+		text-align: left;
+	}
+	.item .title{
+		font-size: 1.3rem;
+	}
+	ul.social{
+		max-width: 320px;
+	}
+	ul.articles{
+		max-width: 640px;
+	}
+	li.article{
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;
+	}
+	.separator{
+		padding-bottom: 10px;
+		border-bottom: 1px solid #ddd;
+	}
+	.title{
+		
+		font-family: Fira Sans, sans-serif;
+		color: #222;
+		font-weight: 300;
+		
+		margin-bottom: 2px;
+		padding: 0px;
+		margin-top: 10px;
+	}
+	.subtitle{
+		margin-top: 0;
+		padding-top: 0px;
+	}
+	.article .title{
+		margin-bottom: 5px;
+	}
+	.article p{
+		padding: 0 20px;
+		margin: 0px;
+		text-align:justify;
+	}
+	h1{
+		font-size: 8rem; 
+	}
+	h2{
+		font-size: 4rem;
+	}
+	h3{
+		font-size: 2rem;
+	}
+	h4{
+		font-size: 1.8rem;
+		padding-top: 8px;
+	}
+	div.list{
+		margin-bottom: 5px;
+		margin-top: 5px;
+		font-size: 1.3rem;
+	}
+	div.list.child{
+		margin-left: 15px;
+	}
+	b{
+		line-height: 20px
+	}

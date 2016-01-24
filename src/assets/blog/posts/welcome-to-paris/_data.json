@@ -1,0 +1,19 @@
+{
+	"post": {
+		"id": "001",
+		"title": "Bievenido Paris",
+		"url": "welcome-to-paris",
+		"language": "Spanish",
+		"comments":true,
+		"date":" 18 de enero del 2016",
+		"author":"Javi"
+	},
+	"posts":[
+		{
+			"id":"001",
+			"title":"Bievenido Paris",
+			"url": "welcome-to-paris",
+			"language":"Spanish"
+		}
+	]
+}

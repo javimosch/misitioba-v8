@@ -1,0 +1,13 @@
+li.article
+	h3.title
+		| Latest posts 
+		
+		
+	ul.items
+		each post, index in locals.posts
+			li.item
+				a(href=self.root+'blog/posts/'+post.url).title
+					!= post.title
+				|&nbsp;(!{post.language}) 
+				div
+					!= post.date

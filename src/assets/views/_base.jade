@@ -1,0 +1,18 @@
+html
+	head
+		include _head
+	body.white
+		header
+			block header
+		nav
+			block nav
+		div.container
+			block content
+		footer
+			block footer
+
+		script(src=self.root+'app.js', type='text/javascript')
+		block scripts
+		
+		
+		include _footer.html

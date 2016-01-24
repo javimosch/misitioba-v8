@@ -1,0 +1,37 @@
+extends ../views/_base
+
+block header
+	include ../views/_header.html
+block content
+
+	div.text-center
+		h2.title Once Upon A Blog
+		h4.subtitle Donde esta el dulce de leche?
+
+		div
+			ul.inline
+				li.spacing-1 
+					a(href='https://www.facebook.com/misitioba/',target='blank')
+						<i class="fa fa-facebook"></i>
+				li.spacing-1
+					a(href='https://twitter.com/javimosch',target='blank')
+						<i class="fa fa-twitter"></i>
+				li.spacing-1
+					a(href='https://github.com/javimosch',target='blank')
+						<i class="fa fa-github"></i>
+				li.spacing-1
+					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank',alt='email me')
+						<i class="fa fa-pencil"></i>
+	
+	div.text-left
+		ul.articles
+			li.article
+				h3.title
+					|Quote of the day
+				p.
+					<em>
+						'Maybe the jorney isn't so much about becoming anything. Maybe it's about  unbecoming everythin that isn't really you, so you can be who you were meant to be in the first place'
+					</em>
+
+
+			include _latest-posts
