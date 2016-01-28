@@ -18,7 +18,7 @@ var clean = require('gulp-clean');
 var jade = require('gulp-jade');
 var data = require('gulp-data');
 var _ = require('lodash');
-
+var ftp = require( 'vinyl-ftp' );
 
 var jadeLocals = {
     self: {
