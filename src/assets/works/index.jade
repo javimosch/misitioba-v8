@@ -1,0 +1,12 @@
+extends ../views/_base
+
+block header
+	include ../views/_header.html
+block content
+
+	div.text-center.separator
+		h2.title !{lang('SECTION_WORKS')} 
+		h4.subtitle.separator
+			| A personal space to develop creativity
+		
+		include ../views/_works.jade

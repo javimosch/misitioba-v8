@@ -1,0 +1,33 @@
+{
+	"LANGUAGES":{
+		"es":"Spanish",
+		"en":"English",
+		"fr":"French"
+	},
+	"DATA": {
+		"es": {
+			"PAGE_SUBTITLE": "Un espacio personal para desarrollar la creativad",
+			"PROJECTS":"PROYECTOS",
+			"SECTION_ABOUT":"ACERCA DE",
+			"GET_IN_TOUCH":"Contactame",
+			"SECTION_SERVICES":"SERVICIOS",
+			"SECTION_WORKS":"TRABAJOS"
+		},
+		"en": {
+			"PAGE_SUBTITLE": "A personal space to develop creativity",
+			"PROJECTS":"PROJECTS",
+			"SECTION_ABOUT":"ABOUT",
+			"GET_IN_TOUCH":"Get in touch",
+			"SECTION_SERVICES":"SERVICES",
+			"SECTION_WORKS":"WORKS"
+		},
+		"fr": {
+			"PAGE_SUBTITLE": "Un espace personnel pour développer la créativité",
+			"PROJECTS":"PROJETS",
+			"SECTION_ABOUT":"À PROPOS DE",
+			"GET_IN_TOUCH":"Entrer en contact",
+			"SECTION_SERVICES":"SERVICES",
+			"SECTION_WORKS":"WORKS"
+		}
+	}
+}

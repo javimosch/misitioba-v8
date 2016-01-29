@@ -11,8 +11,13 @@ html
 		footer
 			block footer
 
-		script(src=self.root+'app.js', type='text/javascript')
+		script(src=self.root+'app.static.js', type='text/javascript')
 		block scripts
 		
 		
-		include _footer.html
+		div.container-fluid.center-block.text-center
+			h4
+				a(href='https://mail.google.com/mail/?view=cm&fs=1&to=ja@misitioba.com',target='blank')
+					| !{lang('GET_IN_TOUCH')}
+
+			include _footer.html

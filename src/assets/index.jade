@@ -2,6 +2,14 @@ extends views/_base
 
 block header
 	include views/_header.html
+	
+	div.center-block.text-right.container.relative
+		ul.ba-grid-languages
+			each val, key in lang.languages()
+				li
+					- var url = "_G_ROOT" + key;
+					a(href=url)= val
+	
 block nav
 block content
 	include views/_home.jade

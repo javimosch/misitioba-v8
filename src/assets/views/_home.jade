@@ -1,7 +1,11 @@
 div.text-center.separator
 	h1.title MISITIOBA 
 	h4.subtitle.separator
-		| A personal space to develop creativity
+		//| A personal space to develop creativity
+		| !{lang('PAGE_SUBTITLE')}
+
+	a.button-black(href='services') 
+		div !{lang('SECTION_SERVICES')}
 
 	include _slider.html
 
@@ -9,12 +13,15 @@ div.text-center.separator
 	
 
 	a.button-black(href='projects') 
-		div PROJECTS
+		div !{lang('PROJECTS')}
 
 	a.button-black(href='blog') 
 		div BLOG
+		
+	a.button-black(href='works') 
+		div !{lang('SECTION_WORKS')}
 	
 	a.button-black(href='javierarancibia') 
-		div ABOUT
+		div !{lang('SECTION_ABOUT')}
 
 	
