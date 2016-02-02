@@ -45,6 +45,7 @@
   },
   "dependencies": {
     "babel": "^6.3.26",
+    "babel-register": "^6.4.3",
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
     "express": "^4.13.4",
