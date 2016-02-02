@@ -1,4 +1,6 @@
+
 require("babel-register");
+
 var express = require('express');
 var app = express();
 
@@ -46,7 +48,9 @@ db.once('open', function() {
 	listen();
 });
 mongoose.connect(uri);
+
 console.log('Connecting to mongo');
+
 
 var Schema = mongoose.Schema;
 
@@ -63,15 +67,19 @@ var articleSchema = new Schema({
 		favs: Number
 	}
 });
+
 var Article = mongoose.model('Article', articleSchema);
 
 app.get('/article/count', function(req, res) {
 	Article.count({title:"Poca madre"}).then(function(err, count){
+
 		res.send("[" + count + "] entries found.");
 	});
 });
 
+
 app.get('/article/save', function(req, res) {
+
 	var a = new Article();
 	a.title = "Poca madre";
 	a.save().then((err, a, num) => {
@@ -79,6 +87,7 @@ app.get('/article/save', function(req, res) {
 			res.send("[" + count + "] entries found.");
 		});
 	});
+
 });
 
 function listen() {
