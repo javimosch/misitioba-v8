@@ -46,9 +46,11 @@
   "dependencies": {
     "babel": "^6.3.26",
     "babel-register": "^6.4.3",
+    "body-parser": "^1.14.2",
     "bootstrap": "^3.3.6",
     "bootstrap-sass": "^3.3.6",
     "express": "^4.13.4",
+    "express-cors": "0.0.3",
     "font-awesome": "^4.5.0",
     "jquery": "^2.2.0",
     "lodash": "^4.0.0",
