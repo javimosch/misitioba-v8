@@ -1,0 +1,22 @@
+extends /layouts/_base.accrocs
+block header
+block content
+	output.data(data-url,data-dashboard=root(accrocs.root)+'/reviews')
+	output
+	include /partials/_hbs.accrocs.html
+block scripts
+	script.
+		r = new Ractive({
+		  el: _.el('output'),
+		  template: _.el("#login").html(),
+		  data: { login:undefined,pass:undefined },
+		  login:()=>{
+				if(r.get('login') == 'admin' && r.get('pass').toString() == '123'){
+					window.location.href= _.el('[data-url]').dataset.dashboard;
+				}
+		  }
+		});
+		 
+		r.on( 'login', function (evt) {
+		
+		} );

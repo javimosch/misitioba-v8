@@ -1,0 +1,27 @@
+extends /layouts/_base.accrocs
+block header
+block main
+	ul.acrocs.articles.text-left
+		li.article
+			output.title.
+				<i class="fa fa-hashtag">!{intro.title}</i>
+			p !{window.decodeURIComponent(window.atob(intro.content))}
+		li.article.text-right
+			em Escrito el !{intro.date||'nodate'} por !{intro.author||'noauthor'}
+		each item, index in reviews
+			li.article
+				output.title
+					a(href=root("accrocs/reviews/"+item.url)).
+						<i class="fa fa-hashtag">!{item.title}</i>
+				em Escrito el !{item.date} por !{item.author}
+block sidebar
+	output.
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Accrocs Sidebar -->
+		<ins class="adsbygoogle"
+				style="display:inline-block;width:300px;height:600px"
+				data-ad-client="ca-pub-4616201649688617"
+				data-ad-slot="7983786688"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>

@@ -1,0 +1,77 @@
+extends ../../../views/_base
+
+block header
+	include ../../../views/_header.html
+	div.text-center.separator
+		output.
+			<i class="fa fa-cogs fa-5x"></i>
+		div
+			h2.title Html-to-Json
+		nav
+			ul
+				li
+					a.button-black(href='../') 
+						b Return
+
+block content
+	output.
+			<style type="text/css" media="screen" scoped>
+				.editor{
+					width:80%;
+				}
+				.editor .child{
+					width:100%;
+					margin:0px;
+					padding:0px;
+					resize: none;
+				}
+				#preview{
+					border:0px;
+				}
+				#json-editor{
+					height: 100px;
+				}
+				#editor { 
+					height: 200px;
+				}
+				.fields .add{
+					    position: absolute;
+					right: -20px;
+					bottom: 5px;
+				}
+			</style>
+	
+	div.col-md-12
+		div.editor.center-block
+			div.fields.relative
+				//i.fa.fa-plus.add
+				output(data-view)
+			div.newField.hidden
+				label new-field
+				div.container
+					output(data-view)
+					button.cancel Cancel
+					button(disabled).save Save
+				
+			div
+				button.clear Clear
+				button.download-json Download json
+				button.download-raw Download raw encoded html
+			div
+				label Json model
+				input(type="file",id="json-input").child
+			div
+				label Raw content
+				input(type="file",id="file-input").child
+			div 
+				label Editor
+				div#json-editor
+				div#editor
+			div
+				label Preview
+				iframe#preview.child
+			
+			script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/ace.js")
+			//script(src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.3/theme-xcode.js")
+block scripts
+	script(src="./html-to-json.js")

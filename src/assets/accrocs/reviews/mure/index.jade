@@ -1,0 +1,21 @@
+extends /layouts/_base.accrocs.article
+
+
+block header
+block main
+	ul.acrocs.articles.text-left
+		li.article
+			output.title.
+				<i class="fa fa-hashtag">!{title}</i>
+			p !{window.decodeURIComponent(window.atob(content))}
+		li.article.text-right
+			em Escrito el !{date||'nodate'} por !{author||'noauthor'}
+
+	
+block sidebar
+	div.text-center.separator.center-block
+		if googleMapIframes !== undefined
+			each map_url, index in googleMapIframes
+				output.
+					<iframe class="img-responsive center-block" src="!{map_url}" frameborder="0" style="border:0" allowfullscreen style=""></iframe>
+	include /partials/_accrocs-tags

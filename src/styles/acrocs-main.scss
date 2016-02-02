@@ -1,0 +1,35 @@
+@import 'font-awesome';
+
+body.acrocs {
+    background: white;
+    color: black;
+    padding: 5px;
+    font-size: 1.5rem;
+	    font-family: Fira Sans, sans-serif;
+}
+
+header nav a{
+	font-size: 15px;
+    padding: 5px;
+}
+
+.acrocs.articles .article .title{
+	color: black;
+    font-size: 3rem;
+}
+.acrocs.articles .article p {
+    padding: 0px;
+    margin: 0px;
+    text-align: justify;
+}
+
+input.accroc{
+    border: 1px solid transparent;
+}
+input.accroc:focus,input.accroc:hover{
+    outline:none;
+    border: 1px solid black;
+}
+input.accroc.search{
+    
+}

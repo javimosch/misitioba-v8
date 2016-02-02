@@ -1,0 +1,8 @@
+div.text-left.separator
+		if tags
+			h2 Tags
+			ul
+				each tag, index in tags
+					li
+						a(href=root('accrocs/reviews?tags='+tag)) 
+							i.fa.fa-hashtag !{tag}

@@ -4,7 +4,7 @@ li.article
 		
 		
 	ul.items
-		each post, index in locals.posts
+		each post, index in posts
 			li.item
 				a(href=self.root+'blog/posts/'+post.url).title
 					!= post.title

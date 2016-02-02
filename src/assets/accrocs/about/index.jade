@@ -1,0 +1,11 @@
+extends /layouts/_base.accrocs
+
+block header
+block main
+	ul.acrocs.articles.text-left
+		li.article
+			output.title.
+				<i class="fa fa-hashtag">!{title}</i>
+			p !{window.decodeURIComponent(window.atob(content))}
+		li.article.text-right
+			em Escrito el !{date||'nodate'} por !{author||'noauthor'}

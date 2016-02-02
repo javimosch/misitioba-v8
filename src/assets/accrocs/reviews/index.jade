@@ -1,0 +1,127 @@
+extends /layouts/_base.accrocs
+block header
+block main
+	output.data(data-url-search=root(accrocs.root)+'/reviews?tags=')
+	ul.acrocs.articles.text-left
+		each item, index in reviews
+			- var dataTag = window.btoa(JSON.stringify(item.tags));
+			li.article(data-tag=dataTag,data-article)
+				output.title
+					a(href=root("accrocs/reviews/"+item.url)).
+						<i class="fa fa-hashtag">!{item.title}</i>
+				em Escrito el !{item.date} por !{item.author}
+				if item.tags
+				div
+					i.fa.fa-tags
+						ul.inline
+							each t,i in item.tags
+								li.spacing-1
+									a(href=root(accrocs.root+'/reviews?tags='+t)) !{t}
+
+block sidebar
+	h2 Busqueda
+	input.accroc.search(placeholder='cute, cheap')
+	div.filtro.hidden
+		h2 Filtros
+		ul.inline
+	include /partials/_accrocs-tags
+
+
+	output.
+		<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+		<!-- Accrocs reviews -->
+		<ins class="adsbygoogle"
+		style="display:inline-block;width:300px;height:250px"
+		data-ad-client="ca-pub-4616201649688617"
+		data-ad-slot="7704585086"></ins>
+		<script>
+		(adsbygoogle = window.adsbygoogle || []).push({});
+		</script>
+
+block scripts
+	script.
+		function param(name) {
+		    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+		    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+		        results = regex.exec(location.search);
+		    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+		}
+		function filtrar(filtros,exclusionHandler,inclusionHandler){
+			_.el.each('[data-article]',(article)=>{
+				var tags = article.dataset.tag;
+				var excluded = false;
+				tags = atob(tags);
+				tags = JSON.parse(tags);
+				filtros.forEach((tag)=>{
+					if(!_.includes(tags,tag)) {
+						exclusionHandler(article);
+						excluded = true;
+						return false;
+					}
+				});
+				if(!excluded){
+					inclusionHandler(article);
+				}
+			});
+		};
+		function DOMrenderFiltros(filtros,newItemHandler,outputHandler){
+
+			
+
+			var out = _.dom('output');
+			filtros.forEach((tag)=>{
+				newItemHandler(tag).appendTo(out);
+			});
+			outputHandler(out);
+		};
+
+
+		((filtros)=>{
+			function _filtrar(){
+				filtrar(filtros,(excludedArticle)=>{
+					excludedArticle.toggle('hidden',true);
+				},(includedArticle)=>{
+					includedArticle.toggle('hidden',false);
+				});
+			}
+			function _render(){
+				if(filtros.length===0){
+					_.el('.filtro').toggle('hidden',true);
+					return;
+				}
+				DOMrenderFiltros(filtros,(tag)=>{
+					var li = _.dom("<li class='link'></li>");
+					li.onclick=(evt)=>{
+						filtros = _.filter(filtros,(t)=>t!==tag);
+						_filtrar();
+						_render();
+						console.log(filtros);
+					};
+					li.append(_.dom("<i class='fa fa-close'></i>").html(tag));
+					return li;
+				},(out)=>{
+					_.el('.filtro').el('ul').html('').append(out);
+					_.el('.filtro').toggle('hidden',false)
+				});
+			};
+			_render();
+			_filtrar();
+		})(param('tags') && param('tags').split(',') || []);
+
+
+		var search = ((el)=>{
+			function search(txt){
+				window.location.href= _.el('.data').dataset.urlSearch + txt;
+				console.warn(window.location.href);
+			}
+			el.onkeyup=(evt)=>{
+				if(evt.keyCode == "13"){
+					search(el.value.trim());
+				}
+
+			}
+		})(_.el('.search'));
+		
+
+
+

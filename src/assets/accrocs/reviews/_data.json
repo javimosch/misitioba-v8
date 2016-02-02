@@ -1,0 +1,34 @@
+{
+	"tags": ["elegante", "bajo precio", "lindo", "agradable", "comodo", "buenos platos"],
+	"reviews": [{
+		"author": "Anaïs",
+		"date": "01 January 2016",
+		"title": "La Bacca",
+		"url": "la-bacca",
+		"tags": ["cute", "barato"]
+	}, {
+		"author": "Anaïs",
+		"date": "01 February 2016",
+		"title": "Mure",
+		"url": "mure",
+		"tags": ["chick"]
+	}, {
+		"author": "Anaïs",
+		"date": "30 January 2016",
+		"title": "Café de l'Empire",
+		"url": "cafe-empire",
+		"tags": ["cute", "cheap"]
+	}, {
+		"author": "Anaïs",
+		"date": "03 February 2016",
+		"title": "Baan Thaï",
+		"url": "baan-thai",
+		"tags": ["expensive", "comodo"]
+	}, {
+		"author": "Anaïs",
+		"date": "03 February 2016",
+		"title": "François Régis Gaudry",
+		"url": "francois-regis-gaudry",
+		"tags": ["expensive", "comodo", "elegante"]
+	}]
+}

@@ -32,7 +32,7 @@ var lang = require('./tools/jsonlang');
 var ftpConfig = {
 	src: ['dist/**/*.*'],
 	dest: '',
-    auth: {
+	auth: {
 		host: 'misitioba.com',
 		user: 'gulproot@misitioba.com',
 		password: 'gtf@123',
@@ -41,26 +41,39 @@ var ftpConfig = {
 	}
 };
 
+var DATA_PATHS = [
+	'./src/assets/accrocs/_accrocs.js'
+];
 
 
 var GLOBALS = {
-	'_G_ROOT':'/',
+	'_G_ROOT': '/',
 };
 
 var events = {
-	onLanguageFileChanged:[]
+	onLanguageFileChanged: []
 };
 
 var jadeConfig = {
 	src: 'src/assets/**/index.jade',
-	dest:'dist',
+	dest: 'dist',
 	languageFile: './language.json',
 	languageDefault: 'en'
 };
+
+var atob = require('atob');
+var btoa = require('btoa');
+var uridecode = require('uridecode');
 var jadeLocals = {
-    self: {
-        root: '/' //ver elimianr referencias
-    }
+	basedir: 'src/assets/views',
+	window: {
+		atob: atob,
+		btoa:btoa,
+		decodeURIComponent: uridecode
+	},
+	self: {
+		root: '/' //ver elimianr referencias
+	}
 };
 
 
@@ -68,8 +81,8 @@ var jadeLocals = {
 var isProduction = (argv.p && true) || false;
 var enableMultiLanguage = (argv.multilang && true) || false;
 
-console.log('Production : ',isProduction);
-console.log('Multilang {'+argv.multilang+'} {'+(typeof argv.multilang)+'} : ',enableMultiLanguage);
+console.log('Production : ', isProduction);
+console.log('Multilang {' + argv.multilang + '} {' + (typeof argv.multilang) + '} : ', enableMultiLanguage);
 
 //expand watch limit (linux)
 //echo fs.inotify.max_user_watches=524288 | sudo tee -a /etc/sysctl.conf && sudo sysctl -p
@@ -78,106 +91,111 @@ console.log('Multilang {'+argv.multilang+'} {'+(typeof argv.multilang)+'} : ',en
 watchify.args.debug = true;
 
 var tasks = {
-    watchAssets: function () {
-        watch(['src/assets/**/*.*', '!src/assets/**/*.png', '!src/assets/**/*.jade'], function () {
-            gulp.run('build:assets');
-        });
-        watch(['src/assets/**/*.jade', 'src/assets/**/*.html', 'src/assets/**/*.json'], function () {
-            gulp.run('build:jade');
-        });
-		watch([jadeConfig.languageFile],function(){
-			events.onLanguageFileChanged.forEach(function(cb){cb();});
+	watchAssets: function() {
+		watch(['src/assets/**/*.*', '!src/assets/**/*.png', '!src/assets/**/*.jade', '!src/assets/**/*.crdownload'], function() {
+			gulp.run('build:assets');
+		});
+		watch(['src/assets/**/*.jade', 'src/assets/**/*.html', 'src/assets/**/*.json'], function() {
 			gulp.run('build:jade');
 		});
-    },
-    moveAssets: function () {
-        return gulp.src(['src/assets/**', '!src/assets/**/*.jade', '!src/**/_*.*'])
-            .pipe(gulp.dest('dist'))
-            .pipe(gulpif(!isProduction, browserSync.stream({
-                once: true
-            })));
-    },
-    compileJade: function (cb) {
-        JADE.runAll(cb);
+		watch([jadeConfig.languageFile], function() {
+			events.onLanguageFileChanged.forEach(function(cb) {
+				cb();
+			});
+			gulp.run('build:jade');
+		});
 	},
-    watchStyles: function () {
-        watch(['src/styles/**/*.*'], function () {
-            gulp.run('build:styles');
-        });
-    },
-    compileStyles: function () {
-        return gulp.src('src/styles/app.scss')
-            .pipe(gulpif(!isProduction,sourcemaps.init()))
+	moveAssets: function() {
+		return gulp.src(['src/assets/**', '!src/assets/**/*.jade', '!src/**/_*.*'])
+			.pipe(gulp.dest('dist'))
+			.pipe(gulpif(!isProduction, browserSync.stream({
+				once: true
+			})));
+	},
+	compileJade: function(cb) {
+		JADE.runAll(cb);
+	},
+	watchStyles: function() {
+		watch(['src/styles/**/*.*'], function() {
+			gulp.run('build:styles');
+		});
+	},
+	compileStyles: function() {
+		return gulp.src('src/styles/app.scss')
+			.pipe(gulpif(!isProduction, sourcemaps.init()))
 			.pipe(sass(
-				_.extend(
-				{includePaths: [
-                    './node_modules/bootstrap-sass/assets/stylesheets'
-                ]},
-					(isProduction)?{outputStyle: 'compressed'}:{}
-				)
-			))			
-			.pipe(gulpif(isProduction,cssnano()))
-			.pipe(gulpif(!isProduction,sourcemaps.write('.')))
-            .pipe(gulp.dest('dist'))
-            .pipe(gulpif(!isProduction, browserSync.stream({
-                once: true
-            })));
-    },
-    buildDev: function (cb) {
-        runSequence('clean'
-			, 'build:scripts-static'
-			, 'build:scripts'
-			, 'build:vendor-static'
-			, 'build:vendor'
-			, 'build:assets', 'build:jade', 'build:styles', function () {
-				cb();
-			});
-    },
-    buildProd: function () {
-        isProduction = true;
-		return runSequence('build-dev');
-    },
-	buildStatic: function (cb) {
-		isProduction = true;
-		runSequence('clean', 'build:scripts-static', 'build:vendor-static'
-			, 'build:assets', 'build:jade', 'build:styles', function () {
-				cb();
-			});
+				_.extend({
+					includePaths: [
+						'./node_modules/bootstrap-sass/assets/stylesheets',
+						'./node_modules/font-awesome/scss'
+					]
+				}, (isProduction) ? {
+					outputStyle: 'compressed'
+				} : {})
+			))
+			.pipe(gulpif(isProduction, cssnano()))
+			.pipe(gulpif(!isProduction, sourcemaps.write('.')))
+			.pipe(gulp.dest('dist'))
+			.pipe(gulpif(!isProduction, browserSync.stream({
+				once: true
+			})));
 	},
-    clean: function () {
-        return gulp.src('dist', {
-			read: false
-		})
-            .pipe(clean({
-                force: true
-            }));
-    },
-    watch: function () {
-        return runSequence('build-dev', 'watch:assets', 'watch:styles', 'server');
-    },
-    server: function () {
-        browserSync.init({
-            server: "./dist",
-            port: 3334,
-            open: false
-        });
-    },
-	deploy: function () {
-        var conn = ftp.create(ftpConfig.auth);
+	buildDev: function(cb) {
+		runSequence('clean', 'build:scripts-static', 'build:scripts', 'build:vendor-static', 'build:vendor', 'build:assets', 'build:jade', 'build:styles', function() {
+			cb();
+		});
+	},
+	buildProd: function() {
+		isProduction = true;
+		return runSequence('build-dev');
+	},
+	buildStatic: function(cb) {
+		isProduction = true;
+		runSequence('clean', 'build:scripts-static', 'build:vendor-static', 'build:assets', 'build:jade', 'build:styles', function() {
+			cb();
+		});
+	},
+	clean: function() {
+		return gulp.src('dist', {
+				read: false
+			})
+			.pipe(clean({
+				force: true
+			}));
+	},
+	watch: function() {
+		return runSequence('build-dev', 'watch:assets', 'watch:styles', 'server');
+	},
+	watchOnly: function() {
+		return runSequence('watch:assets', 'watch:styles', 'server');
+	},
+	server: function() {
+		browserSync.init({
+			server: "./dist",
+			port: 3334,
+			open: false
+		});
+	},
+	deploy: function() {
+		var conn = ftp.create(ftpConfig.auth);
 
-        return gulp.src(ftpConfig.src, { base: '.', buffer: false })
-			.pipe(rename(function (path) {
+		return gulp.src(ftpConfig.src, {
+				base: '.',
+				buffer: false
+			})
+			.pipe(rename(function(path) {
 				path.dirname = path.dirname.toString().replace("dist", "");
 				return path;
 			}))
-            .pipe(conn.newer('/' + ftpConfig.dest)) // only upload newer files
-            .pipe(conn.dest('/' + ftpConfig.dest));
+			.pipe(conn.newer('/' + ftpConfig.dest)) // only upload newer files
+			.pipe(conn.dest('/' + ftpConfig.dest));
 
-    }
+	}
 };
 
-var JS = (function () {
+var JS = (function() {
 	var bundlers = {};
+
 	function createTask(opt) {
 		var srcName = opt.src.toString().substr(opt.src.lastIndexOf('/') + 1);
 		opt.rename = opt.rename || srcName;
@@ -186,16 +204,16 @@ var JS = (function () {
 		bundler.transform(babelify.configure({
 			sourceMapRelative: opt.src.substring(0, opt.src.lastIndexOf('/'))
 		}));
-		var task = function () {
+		var task = function() {
 			return bundler.bundle()
-				.on('error', function (err) {
+				.on('error', function(err) {
 					gutil.log(err.message);
 					browserSync.notify("Browserify Error!");
 					this.emit("end");
 				})
 				.pipe(exorcist(opt.dist + '/' + opt.rename + '.map'))
 				.pipe(source(srcName))
-				.pipe(gulpif(isProduction, streamify(uglify())))
+				//.pipe(gulpif(isProduction, streamify(uglify())))
 				.pipe(gulpif(isProduction, streamify(minify())))
 				.pipe(gulp.dest(opt.dist || 'dist'))
 				.pipe(gulpif(!isProduction, browserSync.stream({
@@ -211,59 +229,114 @@ var JS = (function () {
 	};
 })();
 
-var JADE = (function(jadeLocals,jadeConfig){
-	var _lang = lang(jadeConfig.languageFile,jadeConfig.languageDefault);
+
+var ExtendRequire = (() => {
+	var get = (path, data) => {
+		if (require.cache[path]) {
+			delete require.cache[path];
+		}
+		var r = require(path);
+		if (r.configure) return r.configure(data);
+		else return r;
+	};
+	var load = (paths, locals) => {
+		var rta = {};
+		paths.forEach((path) => {
+			rta = _.extend(data, get(path, locals));
+		});
+		return rta;
+	};
+	return (data, paths) => {
+		data = _.extend(data, load(paths, data));
+		return data;
+	};
+})();
+
+
+
+var JADE = (function(jadeLocals, jadeConfig) {
+	var _lang = lang(jadeConfig.languageFile, jadeConfig.languageDefault);
 	var _tasks = [];
-	function newTask(name,src,dest,language){
-		
-		var _langTaskInstance = lang(jadeConfig.languageFile,language);
-		var _locals = _.extend(_.clone(jadeLocals),{lang:_langTaskInstance});
-		
-		events.onLanguageFileChanged.push(function(){
+
+	function newTask(name, src, dest, language) {
+		var _langTaskInstance = lang(jadeConfig.languageFile, language);
+		events.onLanguageFileChanged.push(function() {
 			_langTaskInstance.reload();
 		});
-		
-		
-		_locals.root = function(){
-			return (GLOBALS._G_ROOT + '/' + _locals.lang.current + '/').replace('//','/');
-		};
-		
-		var task = function(){
-			var r = gulp.src(src)
-			.pipe(data(function (file, cb) {
-				var path = file.path.replace('index.jade', '') + '_data.json';
-				if (require.cache[path]) {
-					delete require.cache[path];
+		var task = function() {
+			//
+			var _locals = _.extend(_.clone(jadeLocals), {
+				lang: _langTaskInstance
+			});
+			
+
+			_locals.root = (function(_root) {
+				return function(relativePath){
+					if (_langTaskInstance.isDefault()) {
+						return (_root + '/' + relativePath || '').replace('//', '/');
+					} else {
+						return (_root + '/' + _locals.lang.current() + '/' + relativePath || '').replace('//', '/');
+					}
 				}
-				cb(undefined, _.extend(require(path), _locals));
-			}))
-			.pipe(jade())
-			.on('error', function (err) {
-				gutil.log(err.message);
-				browserSync.notify("Jade Error!");
-				this.end();
-			})
-			.pipe(gulpif(isProduction, htmlmin({ collapseWhitespace: true })));	
-			Object.keys(GLOBALS).forEach(function(k){
+			})(GLOBALS._G_ROOT);
+
+			_locals = ExtendRequire(_locals,DATA_PATHS);
+			
+			//
+			var r = gulp.src(src)
+				.pipe(data(function(file, handle) {
+					var path = file.path.replace('index.jade', '_data.json');
+					if (require.cache[path]) {
+						delete require.cache[path];
+					}
+					try {
+						var _data = require(path);
+						_locals = _.extend(_locals, _data);
+						handle(undefined, undefined);
+					} catch (e) {
+						handle(undefined, undefined);
+					}
+				}))
+				.pipe(jade((() => {
+					var opts = {
+						basedir: _locals.basedir,
+						locals: _locals
+					};
+
+					return opts;
+				})()))
+				.on('error', function(err) {
+					gutil.log(err.message);
+					browserSync.notify("Jade Error!");
+					this.end();
+				})
+				.pipe(gulpif(isProduction, htmlmin({
+					collapseWhitespace: true
+				})));
+			Object.keys(GLOBALS).forEach(function(k) {
 				r = r.pipe(replace(k, GLOBALS[k]));
 			});
 			r = r.pipe(gulp.dest(dest))
-			.pipe(gulpif(!isProduction, browserSync.stream({
-				once: true
-			})));
+				//.pipe(gulpif(!isProduction, browserSync.stream({
+				//		once: true
+				//})));
+			;
 			return r;
-		} 
+		}
 		gulp.task(name, task);
 		_tasks.push(name);
 		return task;
 	}
-	function runAll(cb){
-		var _left = _tasks;
-		function runLeft(){
-			if(_left.length === 0) {
+
+	function runAll(cb) {
+		var _left = _.clone(_tasks);
+
+		function runLeft() {
+			if (_left.length === 0) {
+				browserSync.reload();
 				cb();
-			}else{
-				runSequence(_left[0],function(){
+			} else {
+				runSequence(_left[0], function() {
 					_left = _left.slice(1);
 					runLeft();
 				});
@@ -271,32 +344,48 @@ var JADE = (function(jadeLocals,jadeConfig){
 		}
 		runLeft();
 	}
-	function createTasksForAllLanguages(){
-		_lang.availableLangs.forEach(function(lang_code){
-			JADE.task('build:jade-'+lang_code,jadeConfig.src,jadeConfig.dest+'/'+lang_code,lang_code);
+
+	function createTasksForAllLanguages() {
+		_lang.availableLangs.forEach(function(lang_code) {
+			JADE.task('build:jade-' + lang_code, jadeConfig.src, jadeConfig.dest + '/' + lang_code, lang_code);
 		});
 	}
-	function createDefaultTask(){
-		JADE.task('build:jade-default',jadeConfig.src,jadeConfig.dest,_lang.current);
+
+	function createDefaultTask() {
+		JADE.task('build:jade-default', jadeConfig.src, jadeConfig.dest, _lang.current());
 	}
-	return{task:newTask,tasks:_tasks,runAll:runAll,
-	createTasksForAllLanguages:createTasksForAllLanguages, createDefaultTask:createDefaultTask};
-})(jadeLocals,jadeConfig);
+	return {
+		task: newTask,
+		tasks: _tasks,
+		runAll: runAll,
+		createTasksForAllLanguages: createTasksForAllLanguages,
+		createDefaultTask: createDefaultTask
+	};
+})(jadeLocals, jadeConfig);
 
 JADE.createDefaultTask();
-if(enableMultiLanguage){
+if (enableMultiLanguage) {
 	JADE.createTasksForAllLanguages();
 }
 
 
-gulp.task('build:scripts-static', JS.task({ src: './src/scripts/app.static.js' }));
-gulp.task('build:scripts', JS.task({ src: './src/scripts/app.js' }));
-gulp.task('build:vendor-static', JS.task({ src: './src/vendor/vendor.static.js' }));
-gulp.task('build:vendor', JS.task({ src: './src/vendor/vendor.js' }));
+gulp.task('build:scripts-static', JS.task({
+	src: './src/scripts/app.static.js'
+}));
+gulp.task('build:scripts', JS.task({
+	src: './src/scripts/app.js'
+}));
+gulp.task('build:vendor-static', JS.task({
+	src: './src/vendor/vendor.static.js'
+}));
+gulp.task('build:vendor', JS.task({
+	src: './src/vendor/vendor.js'
+}));
 
 gulp.task('watch:styles', tasks.watchStyles);
 gulp.task('watch:assets', tasks.watchAssets);
 gulp.task('watch', tasks.watch);
+gulp.task('watch-only', tasks.watchOnly);
 
 gulp.task('clean', tasks.clean);
 gulp.task('build:styles', tasks.compileStyles);
@@ -311,17 +400,22 @@ gulp.task('server', tasks.server);
 gulp.task('deploy', tasks.deploy);
 gulp.task('default', tasks.watch);
 
-gulp.task('tojson', function () {
+gulp.task('tojson', function() {
 	gulp.src('./dist/index.html')
 		.pipe(toJson());
 });
 
 gulp.task('auto-reload', function() {
-  var p;
-  gulp.watch('gulpfile.js', spawnChildren);
-  spawnChildren();
-  function spawnChildren(e) {
-    if(p) { p.kill(); }
-    p = spawn('gulp', ['default'], {stdio: 'inherit'});
-  }
+	var p;
+	gulp.watch('gulpfile.js', spawnChildren);
+	spawnChildren();
+
+	function spawnChildren(e) {
+		if (p) {
+			p.kill();
+		}
+		p = spawn('gulp', ['watch-only'], {
+			stdio: 'inherit'
+		});
+	}
 });

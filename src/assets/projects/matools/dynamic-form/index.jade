@@ -1,0 +1,46 @@
+extends ../../../views/_base
+
+block header
+	include ../../../views/_header.html
+	div.text-center.separator
+		output.
+			<i class="fa fa-cogs fa-5x"></i>
+		div
+			h2.title Dynamic-form
+		nav
+			ul
+				li
+					a.button-black(href='../') 
+						b Return
+block content
+	output.
+			<style type="text/css" media="screen" scoped>
+				.editor{
+					width:80%;
+				}
+				.editor .child{
+					width:100%;
+					margin:0px;
+					padding:0px;
+					resize: none;
+				}
+				.fields .add{
+					    position: absolute;
+					right: -20px;
+					bottom: 5px;
+				}
+			</style>
+	
+	div.col-md-12
+		div.editor.center-block
+			div.fields.relative
+				i.fa.fa-plus.add
+			div.newField.hidden
+				label new-field
+				div.container
+					form
+					button.cancel Cancel
+					button(disabled).save Save
+
+block scripts
+	script(src="./dynamic-form.js")

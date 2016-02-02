@@ -1,0 +1,21 @@
+extends _base.accrocs
+
+block footer
+	div#disqus_thread
+	script.
+		var disqus_shortname = '!{accrocs.disqus_name}';
+		var disqus_url = '!{"http://misitioba.com/accrocs/reviews/"+url}';
+		(function(){
+			var dsq = document.createElement('script');
+			dsq.type = 'text/javascript';
+			dsq.async=true;
+			var url  = '//' + disqus_shortname + '.disqus.com/';
+			url += 'embed.js';
+			//url += 'count.js';
+			dsq.src= url;
+			 (document.querySelector('head') || document.querySelector('body')).appendChild(dsq);
+		})();
+
+
+
+

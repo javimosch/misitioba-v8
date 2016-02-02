@@ -1,0 +1,24 @@
+<template id="list">
+<ul>
+	{{#list}}
+	<li>{{this}}</li>
+	{{/list}}
+</ul>
+</template>
+<template id="login" >
+<div class="accrocs center-block text-center">
+	<ul>
+		<li><input twoway="true" placeholder="login" value="{{login}}"/></li>
+		<li><input twoway="true" placeholder="pass" type="password" value="{{pass}}" /></li>
+		<li>
+			<button on-click="login()">login</button>
+		</li>
+	</ul>
+</div>
+</template>
+
+<!--CLIPBOARD
+
+	<label>login: <output contenteditable="true" value="{{login}}"></output></label>
+	
+-->

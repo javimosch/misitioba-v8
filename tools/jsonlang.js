@@ -63,7 +63,8 @@ var lang = function (src, defaultLang) {
 	fn.set = function (_LANGUAGE) {
 		CURRENT_LANGUAGE = _LANGUAGE;
 	};
-	fn.current = CURRENT_LANGUAGE;
+	fn.isDefault=()=> CURRENT_LANGUAGE === defaultLang;
+	fn.current = ()=> CURRENT_LANGUAGE;
 	fn.availableLangs = LANG_KEYS;
 	fn.reload = function(){
 		obj = jsonfile.readFileSync(src);
