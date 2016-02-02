@@ -1,3 +1,4 @@
+require("babel-register");
 var express = require('express');
 var app = express();
 
@@ -35,7 +36,56 @@ app.get('/send', function(req, res) {
 });
 
 
-var PORT = process.env.PORT || 3000;
-app.listen(PORT, function() {
-	console.log('Example app listening on port ' + PORT + '!');
+
+var mongodb = require('mongodb');
+var uri = "mongodb://root:root@ds051553.mongolab.com:51553/misitioba";
+var mongoose = require('mongoose');
+var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+	listen();
 });
+mongoose.connect(uri);
+console.log('Connecting to mongo');
+
+var Schema = mongoose.Schema;
+
+var articleSchema = new Schema({
+	title: String,
+	author: String,
+	content: String,
+	date: {
+		type: Date,
+		default: Date.now
+	},
+	tags: {
+		votes: Number,
+		favs: Number
+	}
+});
+var Article = mongoose.model('Article', articleSchema);
+
+app.get('/article/count', function(req, res) {
+	Article.count({title:"Poca madre"}).then(function(err, count){
+		res.send("[" + count + "] entries found.");
+	});
+});
+
+app.get('/article/save', function(req, res) {
+	var a = new Article();
+	a.title = "Poca madre";
+	a.save().then((err, a, num) => {
+		Article.count({}).then((err, count) => {
+			res.send("[" + count + "] entries found.");
+		});
+	});
+});
+
+function listen() {
+	var PORT = process.env.PORT || 3000;
+	//app.use('/static', express.static(__dirname + '/public'));
+	//app.use('/static', express.static('public'));
+	app.listen(PORT, function() {
+		console.log('Example app listening on port ' + PORT + '!');
+	});
+}
