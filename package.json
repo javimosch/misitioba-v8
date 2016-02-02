@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "gulpfile.js",
+  "scripts": {
+    "start": "node express/app"
+  },
   "author": "javier-arancibia",
   "license": "ISC",
   "devDependencies": {
