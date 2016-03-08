@@ -1,0 +1,50 @@
+extends ../../../views/_base
+
+block header
+	include ../../../views/_header.html
+block content
+
+	div.text-center
+		h2.title !{post.title}
+		h4.subtitle !{post.subtitle}
+	
+	div.text-left
+		ul.articles
+			li.article
+				
+				iframe(src="post.html")#post
+				script.
+					var v = setInterval(()=>{
+						try{
+						_.el('#post').contentWindow.document.body.childNodes[0].innerHTML = _.el('#markdown').innerHTML;
+						_.el('#post').contentWindow.activate();
+						clearInterval(v);
+						}catch(e){}
+					},500);
+					
+				
+			li.article.text-right
+				em Escrito el !{post.date} por !{post.author}
+	
+	div#disqus_thread
+	script
+		|var disqus_shortname = 'misitioba';
+		|var disqus_url = '!{"http://misitioba.com/blog/posts/"+locals.post.url}';
+		|(function(){
+		|var dsq = document.createElement('script');
+		|dsq.type = 'text/javascript';
+		|dsq.async=true;
+		|var url  = '//' + disqus_shortname + '.disqus.com/';
+		if post.comments
+			|url += 'embed.js';
+		else
+			|url += 'count.js';
+		|dsq.src= url;
+		| (document.querySelector('head') || document.querySelector('body')).appendChild(dsq);
+		|})();
+
+	include ../../_back-to-blog
+	include ../../_latest-posts
+	
+	template#markdown
+		| !{markdown(post.content)}

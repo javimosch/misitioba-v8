@@ -1,10 +1,19 @@
-extends ../../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../../views/_header.html
+	include /partials/_ba.header.jade
+//block nav
+	include /partials/_ba.nav.jade
 block content
-	include ../../views/_javi-cv
+	include /_javi-cv
 
 	div.text-center.separator
-		a(href='_ROOTfiles/jacv.pdf')
-			h2.title Download as Pdf
+		h2.title Download
+		div
+			a(href=root('files/cv-javier-arancibia.pdf')) pdf
+		div
+			a(href=root('files/cv-javier-arancibia.jpg')) jpg
+block footer
+	include /partials/_ba.footer.jade
+
+

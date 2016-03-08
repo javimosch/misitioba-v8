@@ -1,0 +1,30 @@
+div#head.text-left.spacing-2
+	ul.inline.logo
+		li
+			a(href=root('')).logo
+				img(src=root('img/logo.white.jpg')).logo
+		li
+			h1.title MISITIOBA 
+			//div
+				h4.subtitle
+					| !{lang('PAGE_SUBTITLE')}
+	
+	ul.inline.nav
+		//li
+			a.button-black(href=root('services')) 
+				div !{lang('SECTION_SERVICES')}
+		li
+			a.button-black(href=root('projects')) 
+				div !{lang('PROJECTS')}
+
+		li
+			a.button-black(href=root('blog')) 
+				div BLOG
+		
+		li
+			a.button-black(href=root('works')) 
+				div !{lang('SECTION_WORKS')}
+
+		li
+			a.button-black(href=root('javierarancibia')) 
+				div !{lang('SECTION_ABOUT')}

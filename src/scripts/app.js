@@ -1,3 +1,1 @@
-
-
-window.dynamic = 'foo';
+require('./angular/app.angular');

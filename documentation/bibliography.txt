@@ -1,0 +1,16 @@
+
+//css media queries
+https://scotch.io/quick-tips/default-sizes-for-twitter-bootstraps-media-queries
+
+http://docs.ractivejs.org/latest/get-started
+
+//html editor
+http://summernote.org/getting-started/#include-jscss
+
+//ajax
+https://github.com/ded/Reqwest
+
+//database
+https://docs.mongodb.org/manual/reference/operator/query/gt/
+https://mongolab.com/databases/misitioba
+http://mongoosejs.com/docs/api.html#document-js

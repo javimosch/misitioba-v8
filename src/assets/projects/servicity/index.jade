@@ -1,7 +1,9 @@
-extends ../../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../../views/_header.html
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
 block content
 	div.intro
 
@@ -96,6 +98,9 @@ block content
 				|- interviewing in march
 			div.list.child
 				|- collecting info
+
+block footer
+	include /partials/_ba.footer.jade
 
 
 

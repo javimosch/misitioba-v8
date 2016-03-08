@@ -1,0 +1,17 @@
+extends /layouts/_base.misitioba.app
+
+block header
+	include /_header.html
+block content
+
+	div.text-center.separator
+		h2.title ADMIN 
+		h4.subtitle.separator
+			| A personal space to develop creativity
+		
+		output#user-form
+		include /partials/_hbs.misitioba.html
+
+block scripts
+	script.
+		window.app('admin-user-create');

@@ -1,1 +1,10 @@
-{}
+{
+	"quotes": [{
+		"content": "%22Twenty%20years%20from%20now%20you%20will%20be%20more%20disappointed%20by%20the%20things%20that%20you%20didn%27t%20do%20than%20by%20the%20ones%20you%20did%20do.%20So%20throw%20off%20the%20bowlines.%20Sail%20away%20from%20the%20safe%20harbor.%20Catch%20the%20trade%20winds%20in%20your%20sails.%20Explore.%20Dream.%20Discover.%22",
+		"author": "Mark Twain"
+	}, {
+		"content": "%22I%u2019ve%20missed%20more%20than%209000%20shots%20in%20my%20career.%20I%u2019ve%20lost%20almost%20300%20games.%2026%20times%20I%u2019ve%20been%20trusted%20to%20take%20the%20game%20winning%20shot%20and%20missed.%20I%u2019ve%20failed%20over%20and%20over%20and%20over%20again%20in%20my%20life.%20And%20that%20is%20why%20I%20succeed.%22",
+		"author": "Michael Jordan"
+	}]
+
+}

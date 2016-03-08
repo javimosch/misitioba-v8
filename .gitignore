@@ -3,7 +3,11 @@ node_modules/**
 **/node_modules
 **/node_modules/**
 resources
+res/img/accrocs
+res/img/ba
 docs/
 dist/
 dist/*
+*.sublime-project
+
 

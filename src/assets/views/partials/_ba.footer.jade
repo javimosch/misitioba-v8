@@ -1,0 +1,30 @@
+div.center-block.text-center.container.relative
+
+	div.text-left
+		ul.articles
+			li#quote.article
+
+				- var randomIndex = Math.floor(Math.random() * (quotes.length-1)) + 0;
+				- var randomQuote = quotes[randomIndex];
+
+				h3.title
+					!= unescape(randomQuote && randomQuote.content || 'randomQuote undefined')
+				p.author 
+					!= '- ' + randomQuote && randomQuote.author || 'randomQuote undefined'
+
+	a.button-black(href=root('')) 
+		div HOME
+	ul.ba-grid-languages
+		each val, key in lang.languages()
+			li
+				- var url = "_G_ROOT" + key;
+				a(href=url)= val
+	div.container-fluid.center-block.text-center
+		h4
+			a(href='https://mail.google.com/mail/?view=cm&fs=1&to=ja@misitioba.com',target='blank')
+				| !{lang('GET_IN_TOUCH')}
+
+	include ../_footer.html
+
+	a(href="#head").smooth.
+		<i id="goup" class="fa fa-caret-square-o-up fa-2x"></i>

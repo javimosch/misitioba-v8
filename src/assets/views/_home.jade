@@ -1,27 +1,20 @@
-div.text-center.separator
-	h1.title MISITIOBA 
-	h4.subtitle.separator
-		//| A personal space to develop creativity
-		| !{lang('PAGE_SUBTITLE')}
+div.row
+	div.col-md-12
+		div.text-center
+			img(src=root('img/logo.white.jpg')).logo.width10p
+			h2.title Hello there,
+				br
+				|I'm Javier Arancibia,
+			h4.subtitle an independent software developer.
 
-	a.button-black(href='services') 
-		div !{lang('SECTION_SERVICES')}
+		div.text-left
+			ul.articles
+				li.article
+					h3.title.
+						In the present (2016), I'm working-solo at Paris, to delivering high-quality web sites as well as for doing IT consulting for local enterprendeurs. I'm always looking to connect with new people for achieve things together.
+				li.article
+					a.button-black(href=root('javierarancibia')) 
+						div MORE
 
-	include _slider.html
-
-	div.text-center
-	
-
-	a.button-black(href='projects') 
-		div !{lang('PROJECTS')}
-
-	a.button-black(href='blog') 
-		div BLOG
-		
-	a.button-black(href='works') 
-		div !{lang('SECTION_WORKS')}
-	
-	a.button-black(href='javierarancibia') 
-		div !{lang('SECTION_ABOUT')}
-
-	
+		//include /_works
+		//include /_projects

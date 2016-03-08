@@ -2,7 +2,7 @@
 output{
 	margin:0px;
 	padding:0px;
-	    outline: 1px solid rgba(0, 0, 0, 0.1);
+	/*outline: 1px solid rgba(0, 0, 0, 0.1);*/
 }
 
 .ba-form-sm{
@@ -17,7 +17,10 @@ output{
 
 
 .ba-grid-languages{
-	position: absolute;
-	right: 10px;
-	top: 19px;
+	position: initial;
+}
+@media (max-width: 568px) { 
+	.ba-grid-languages{
+		position: initial;
+	}
 }

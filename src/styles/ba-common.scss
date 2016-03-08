@@ -56,10 +56,65 @@ padding:5px ;
 font-size:1.5rem ;
 }
 
-
-img.logo{
-  width:40px;
+body.ba {
+    background: url(img/ba/bg5.jpg) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    margin: 0px;
+    padding: 0px;
 }
+
+.ba header{
+    background: white;
+    padding: 0px 0px 20px 0px;
+    margin: 0px 0px 0px 0px;
+}
+.ba footer{
+        margin-bottom: 100px;
+}
+.ba footer > div{
+    padding: 50px 20px;
+    background: skyblue;
+}
+
+.ba .main {
+    background-color: white;
+    margin: 20px auto 0px auto;
+        padding: 20px 20px;
+}
+@media (max-width: 568px) { 
+   .ba .main {
+        margin:0px auto;
+    }
+}
+@media (min-width: 568px) { 
+   .ba .main {
+        min-height:768px;
+    }
+}
+
+.ba nav ul{
+	background: seashell;
+    max-width: 640px;
+    margin: 10px auto;
+    text-align: center;
+    display: flex;
+    width: initial;
+    border-radius: 10px;
+    padding: 0 20px;
+    border: 2px solid black;
+}
+.ba nav ul li{
+	color:red;
+}
+
+.ba .nav li {
+    line-height: 100px;
+}
+
+
 
 .intro-email{
 background: white;
@@ -90,20 +145,22 @@ color: black ;
 }
 a:hover{
 color: #222;
+text-decoration:none;
 }
 
 button.black, a.button-black div{
 background: transparent;
-border: 2px solid rgba(0,0,0,0);
-padding: 15px;
+border: 1px solid rgba(0,0,0,0);
+padding: 0px 15px;
 font-size: 2.5rem;
 font-weight: 600;
 max-width: 200px;
 margin: 10px auto;
+    text-align: center;
 }
 button.black:hover, a.button-black div:hover{
 background: rgba(0,0,0,.1);
-border: 2px solid #000;
+border: 1px solid rgba(0,0,0,.1);
 cursor: pointer;
 }
 

@@ -1,21 +1,26 @@
-extends ../../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../../views/_header.html
-	div.text-center.separator
-		output.
-			<i class="fa fa-cogs fa-5x"></i>
-		div
-			h2.title ma-tools
-		nav
-			ul
-				li
-					a.button-black(href='../') 
-						b Return
-				li
-					a.button-black(href='./html-to-json') HTML-to-JSON
-				li
-					a.button-black(href='./dynamic-form') Dynamic-Form
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
+	
 block content
 	div.col-md-12
-			
+		div.text-center.separator
+			output.
+				<i class="fa fa-cogs fa-5x"></i>
+			div
+				h2.title ma-tools
+			nav
+				ul
+					li
+						a.button-black(href='../') 
+							b Return
+					li
+						a.button-black(href='./html-to-json') HTML-to-JSON
+					li
+						a.button-black(href='./dynamic-form') Dynamic-Form
+block footer
+	include /partials/_ba.footer.jade
+

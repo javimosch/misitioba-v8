@@ -1,0 +1,22 @@
+html(ng-app="app")
+	head(
+		data-root="_G_ROOT",
+		data-language=lang.current()
+	)
+		include ../_head
+		meta(name="application-name",content="Inspectors")
+	body(data-main,ng-controller="root").hidden
+		header
+			block header
+		nav
+			block nav
+		div.container
+			block content
+		footer
+			block footer
+
+		script(src=self.root+'vendor.js', type='text/javascript')
+		script(src=self.root+'app.js', type='text/javascript')
+		block scripts
+		
+		

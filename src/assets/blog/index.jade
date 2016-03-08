@@ -1,28 +1,14 @@
-extends ../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../views/_header.html
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
 block content
+	div.text-left
+		h2.title BLOG
+		h4.subtitle !{lang('USER_EXISTS')}
 
-	div.text-center
-		h2.title Once Upon A Blog
-		h4.subtitle Donde esta el dulce de leche?
-
-		div
-			ul.inline
-				li.spacing-1 
-					a(href='https://www.facebook.com/misitioba/',target='blank')
-						<i class="fa fa-facebook"></i>
-				li.spacing-1
-					a(href='https://twitter.com/javimosch',target='blank')
-						<i class="fa fa-twitter"></i>
-				li.spacing-1
-					a(href='https://github.com/javimosch',target='blank')
-						<i class="fa fa-github"></i>
-				li.spacing-1
-					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank',alt='email me')
-						<i class="fa fa-pencil"></i>
-	
 	div.text-left
 		ul.articles
 			li.article
@@ -35,3 +21,6 @@ block content
 
 
 			include _latest-posts
+block footer
+	include /partials/_ba.footer.jade
+

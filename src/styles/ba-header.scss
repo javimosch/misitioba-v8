@@ -1,0 +1,54 @@
+.ba header *{
+    -moz-user-select: -moz-none;
+    -khtml-user-select: none;
+    -webkit-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+}
+
+.ba header > div{
+	height: 150px;
+    padding: 0px 100px;
+    display: inline-flex;
+    width:100%;
+}
+
+@media (max-width: 1200px) { 
+    .ba header > div{
+        display: inline-table;
+    }
+}
+
+.ba header ul.logo > li{
+	display: inherit;
+}
+
+.ba header ul.logo a.logo{
+    display: inline-flex;
+    height: 150px;
+}
+.ba header ul.logo img.logo{
+    width: 60px;
+    margin: auto auto;
+    height: 60px; 
+}
+
+.ba header ul.logo .title{
+	font-family: Fira Sans, sans-serif;
+    color: #222;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 150px;
+    padding: 0px;
+    margin: 0px 0px 0px 10px;
+    vertical-align: middle;
+}
+
+.ba header ul.nav{
+	margin: auto 100px;
+}
+@media (max-width: 1200px) { 
+    .ba header ul.nav{
+        display:block;
+    }
+}

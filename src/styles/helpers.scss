@@ -4,6 +4,9 @@
     cursor: pointer;
 }
 
+.small{
+	font-size:1.3rem;
+}
 
 
 .vertical-center {
@@ -16,6 +19,11 @@
 
 .inline{
 	display:inline-flex;
+}
+@media (max-width: 568px) { 
+	.inline.table{
+		display:table;
+	}
 }
 
 .spacing-1{
@@ -38,4 +46,25 @@
 
 .relative{
 	position:relative;
+}
+
+
+.text-left{
+	text-align:justify;
+}
+
+.width70p{
+	width:70%;
+}
+.width50p{
+	width:50%;
+}
+.width30p{
+	width:30%;
+}
+.width20p{
+	width:20%;
+}
+.width10p{
+	width:10%;
 }

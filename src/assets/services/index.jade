@@ -1,13 +1,49 @@
-extends ../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../views/_header.html
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
 block content
 
-	div.text-center.separator
+	div.text-left.separator
 		h2.title !{lang('SECTION_SERVICES')} 
 		//h4.subtitle.separator
 			| Freelance
+
+		output.
+			<div class="row">
+			  <div class="col-sm-6 col-md-4">
+			    <div class="thumbnail">
+			      <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=340%C3%97280&w=340&h=280" alt="..." class="img-responsive">
+			      <div class="caption">
+			        <h3>Website programming</h3>
+			        <p>...</p>
+			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-sm-6 col-md-4">
+			    <div class="thumbnail">
+			      <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=340%C3%97280&w=340&h=280" alt="..." class="img-responsive">
+			      <div class="caption">
+			        <h3>SEO Website Audit</h3>
+			        <p>...</p>
+			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			      </div>
+			    </div>
+			  </div>
+			  <div class="col-sm-6 col-md-4">
+			    <div class="thumbnail">
+			      <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=340%C3%97280&w=340&h=280" alt="..." class="img-responsive">
+			      <div class="caption">
+			        <h3>Newslatter</h3>
+			        <p>...</p>
+			        <p><a href="#" class="btn btn-primary" role="button">Button</a> <a href="#" class="btn btn-default" role="button">Button</a></p>
+			      </div>
+			    </div>
+			  </div>
+			</div>
 		
 		div.page-header
 			h1 Web site developement
@@ -34,3 +70,7 @@ block content
 			div.page-header
 				h1 ERP Reseller
 					small Holy sh&%!
+block footer
+	include /partials/_ba.footer.jade
+
+

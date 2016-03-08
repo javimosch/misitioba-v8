@@ -1,0 +1,40 @@
+<template id="tpl-login">
+	<div class="misitioba center-block text-center">
+		<ul>
+			<li><input twoway="true" placeholder="login" value="{{login}}"/></li>
+			<li><input twoway="true" placeholder="pass" type="password" value="{{pass}}" /></li>
+			<label contenteditable="true" value="{{message}}"></label>
+			<li>
+				<button on-click="login()">login</button>
+			</li>
+		</ul>
+	</div>
+</template>
+
+<template id="tpl-users">
+	<div class="misitioba center-block text-center">
+		<label>users</label>
+		<ul>
+			{{#items:i}}
+				<li>{{login}} {{pass}}</li> 
+			{{/items}}
+		</ul>
+	</div>
+</template>
+
+
+<template id="tpl-user-create">
+	<div class="misitioba center-block text-center">
+		<ul>
+			<li><input twoway="true" placeholder="login" value="{{login}}"/></li>
+			<li><input twoway="true" placeholder="pass" type="password" value="{{pass}}" /></li>
+			<label contenteditable="true" value="{{message}}"></label>
+			<li>
+				<button on-click="register()">Register</button>
+			</li>
+			<li>
+				<a href="_G_ROOTadmin/login">Or sign in</a>
+			</li>
+		</ul>
+	</div>
+</template>

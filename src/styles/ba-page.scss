@@ -22,9 +22,6 @@ body{
 		color: #2255cc;
 		font-weight: 400;
 	}
-	.item a:hover{
-		font-weight: 300;
-	}
 	.item{
 		margin: 5px;
 		text-align: left;
@@ -53,7 +50,7 @@ body{
 		font-weight: 300;
 		
 		margin-bottom: 2px;
-		padding: 0px;
+		padding: 0px 0px 20px 0px;
 		margin-top: 10px;
 	}
 	.subtitle{
@@ -71,6 +68,13 @@ body{
 	h1{
 		font-size: 8rem; 
 	}
+
+@media (max-width: 568px) { 
+	h1{
+		font-size: 6rem; 
+	}
+}
+
 	h2{
 		font-size: 4rem;
 	}

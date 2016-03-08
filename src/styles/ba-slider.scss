@@ -15,7 +15,7 @@
   padding: 25px 50px;
   opacity: 0;
   transition: all 0.5s ease-in-out;
-  border-radius: 10px;
+  
   
   /* Let's use using some media queries to resize the arrows
   on smaller devices.*/
@@ -55,32 +55,35 @@
 .carousel-wrapper .item-1 {
   z-index: 2;
   opacity: 1;
-  background: url("../img/banner1.jpg") no-repeat scroll 100%;
+  background: url("../img/slider/aldagate1.jpg") no-repeat scroll 100%;
   background-size:cover;
 }
 /* line 64, ../sass/styles.scss */
 .carousel-wrapper .item-2 {
-  background: url("../img/banner2.jpg") no-repeat scroll 100%;
+  background: url("../img/banner1.jpg") no-repeat scroll 100%;
   background-size:cover;
 }
 /* line 65, ../sass/styles.scss */
 .carousel-wrapper .item-3 {
-  background: url("../img/banner3.jpg") no-repeat scroll 100%;
-  background-size:contain;
+  background: url("../img/slider/endigames1.jpg") no-repeat scroll 100%;
+  background-size:cover;
 }
 /* line 66, ../sass/styles.scss */
 .carousel-wrapper .item-4 {
-  background: url("../img/banner4.jpg") no-repeat scroll 100%;
+  background: url("../img/slider/endigames2.jpg") no-repeat scroll 100%;
   background-size:cover;
 }
 /* line 67, ../sass/styles.scss */
 .carousel-wrapper .item-5 {
-  background: url("../img/banner5.jpg") no-repeat scroll 100%;
-  background-size:contain;
+  background: url("../img/slider/work1.jpg") no-repeat scroll 100%;
+  background-size:cover;
 }
 /* line 71, ../sass/styles.scss */
 .carousel-wrapper h2 {
-  color: #fff;
+      color: black;
+    background: whitesmoke;
+    position: absolute;
+    bottom: 5px;
 }
 /* line 72, ../sass/styles.scss */
 .carousel-wrapper p {

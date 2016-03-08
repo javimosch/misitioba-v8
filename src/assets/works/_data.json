@@ -1,1 +1,9 @@
-{}
+{
+	"works":[
+		{
+			"photo":"https://placeholdit.imgix.net/~text?txtsize=33&txt=340%C3%97280&w=340&h=280",
+			"title":"Dynamic Work 1",
+			"description":"Dynamic decription"
+		}
+	]
+}

@@ -15,7 +15,12 @@ html
 		script(src=self.root+'app.static.js', type='text/javascript')
 		block scripts
 		
-		
+		div.center-block.text-center.container.relative
+			ul.ba-grid-languages
+				each val, key in lang.languages()
+					li
+						- var url = "_G_ROOT" + key;
+						a(href=url)= val
 		div.container-fluid.center-block.text-center
 			h4
 				a(href='https://mail.google.com/mail/?view=cm&fs=1&to=ja@misitioba.com',target='blank')

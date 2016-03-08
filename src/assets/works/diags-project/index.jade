@@ -1,0 +1,77 @@
+extends /layouts/_base.misitioba.static
+
+block header
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
+block content
+
+	div.intro
+		div.text-center
+			h2.title Diags Project
+			h4.subtitle Deliver your house inspection faster and easy
+
+			ul.social
+				li web app / platform
+
+		div.text-left.separator
+			h2.title Description
+			div
+				p.
+					Diags Project is a freelance project that connect people who want to order a house inspection and inspectors to work through the web app. It works out of the box and consists in a intuitive booking system with realtime inspector availability and a back-office to track orders status and invoicing. The clients can be house owners, real state agencies or other companies.
+		
+		div.text-left.separator
+			h2.title How
+			div
+				p.
+					Diags consist in one application and his separated backend. In the web application, a person (landlord or a company) can  order a house inspection with an easy to use booking form. After this first step, he becomes an user with access to a back-office when he can se his order/s status and monthly invoice (companies only). At the same type, any inspector interested in the use of this platform for work can register as an Inspector after negotiating a revenue porcentage with the web app admin.
+			
+			h3.title Technologies (Frontend)
+			div.list
+				div.list.child
+					|- AngularJS 1.5, Jquery
+				div.list.child
+					|- Bootstrap 3
+			h3.title Technologies (Backend)
+			div.list
+				div.list.child
+					|- NodeJS (Express)
+				div.list.child
+					|- MongoDB
+				div.list.child
+					|- Mailgun
+				div.list.child
+					|- Stripe (Payments)
+
+
+		div.text-left.separator
+			h3.title Social
+			div.list
+				div.list.child
+					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank')
+						|email me
+				div.list.child
+					a.twitter-share-button(href="https://twitter.com/share",data-url="http://misitioba/works/diag-project",data-text="Check out this web app that is being deveped",data-via="javimosch",data-hashtags="diags-project")
+				
+				script()
+					|//twitter sdk
+					|!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+'://platform.twitter.com/widgets.js';fjs.parentNode.insertBefore(js,fjs);}}(document, 'script', 'twitter-wjs');
+
+		div.text-left.separator
+			h3.title Status
+			div.list
+				div.list.child
+					|- developing
+
+		div.text-left.separator
+			h3.title Links
+			div.list
+				div.list.child
+					a(target="_blank",href="https:blooming-refuge-27843.herokuapp.com") Booking system
+			div.list
+				div.list.child
+					a(target="_blank",href="https:blooming-refuge-27843.herokuapp.com/admin") Back-office
+
+block footer
+	include /partials/_ba.footer.jade
+

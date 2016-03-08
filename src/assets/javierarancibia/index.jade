@@ -1,28 +1,15 @@
-extends ../views/_base
+extends /layouts/_base.misitioba.static
 
 block header
-	include ../views/_header.html
+	include /partials/_ba.header.jade
+block nav
+	include /partials/_ba.nav.jade
 block content
 
 	div.text-center
 		h2.title I'm Javier Arancibia
 		h4.subtitle Independent software developer
 
-		div
-			ul.inline
-				li.spacing-1 
-					a(href='https://www.facebook.com/misitioba/',target='blank')
-						<i class="fa fa-facebook"></i>
-				li.spacing-1
-					a(href='https://twitter.com/javimosch',target='blank')
-						<i class="fa fa-twitter"></i>
-				li.spacing-1
-					a(href='https://github.com/javimosch',target='blank')
-						<i class="fa fa-github"></i>
-				li.spacing-1
-					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank',alt='email me')
-						<i class="fa fa-pencil"></i>
-	
 	div.text-left
 		ul.articles
 			li.article
@@ -142,10 +129,10 @@ block content
 					b I want and I will create, beyond digital. 
 
 
-			li.article
-				h3.title
+				//li.article
+				//h3.title
 					| I think I know how the world works.
-				h4.subtitle
+				h4
 					| Down-to-earth happiness.
 				div.list
 					|- There is 
@@ -239,3 +226,7 @@ block content
 				li.spacing-1
 					a(href='https://mail.google.com/mail/?view=cm&fs=1&to=arancibiajav@gmail.com',target='blank')
 						<i class="fa fa-pencil"></i>
+block footer
+	include /partials/_ba.footer.jade
+
+

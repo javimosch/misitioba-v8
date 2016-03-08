@@ -1,0 +1,14 @@
+.works .thumbnail .caption {
+    min-height: 150px;
+}
+
+.works .thumbnail img {
+    margin: auto auto;
+}
+
+.works .thumbnail .img-wrapper {
+    min-height: 280px;
+    max-height: 280px;
+    position: relative;
+    display: flex;
+}

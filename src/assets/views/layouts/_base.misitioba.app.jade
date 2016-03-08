@@ -1,0 +1,30 @@
+html
+	head(
+		data-root="_G_ROOT",
+		data-language=lang.current()
+	)
+		include ../_head
+		meta(name="application-name",content="Misitioba")
+	body.white
+		header
+			block header
+		nav
+			block nav
+		div.container
+			block content
+		footer
+			block footer
+
+		script(src=self.root+'vendor.js', type='text/javascript')
+		script(src=self.root+'app.js', type='text/javascript')
+		block scripts
+		
+		
+		div.container-fluid.center-block.text-center
+			h5
+				|(back-office)
+			h4
+				a(href='https://mail.google.com/mail/?view=cm&fs=1&to=ja@misitioba.com',target='blank')
+					| !{lang('GET_IN_TOUCH')}
+
+			include ../_footer.html

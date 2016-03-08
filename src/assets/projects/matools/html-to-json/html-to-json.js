@@ -28,13 +28,15 @@ var htmltojson = (() => {
 	//ACTIONS
 	var action = {
 		copyToJson: (decoded) => {
-			var encoded = encodeURIComponent(decoded || editor.getSession().getValue());
+			//var encoded = encodeURIComponent(decoded || editor.getSession().getValue());
+			var encoded = decoded || editor.getSession().getValue();
 			instance = _.extend(_.clone(model), { content: encoded });
 			jsoneditor.setValue(JSON.stringify(instance, null, '\t'));
 		},
 		copyToEditor: (content) => {
 			var encoded = content || model.content;
-			var decoded = decodeURIComponent(encoded);
+			//var decoded = decodeURIComponent(encoded);
+			var decoded = encoded;
 			editor.setValue(decoded);
 		},
 		openDownloadDialog: (filename, encodedData, mimeType) => {
@@ -122,7 +124,8 @@ var htmltojson = (() => {
 						action.copyToEditor();
 						action.copyToJson();
 					} else {
-						var encoded = encodeURIComponent(editor.getSession().getValue());
+						//var encoded = encodeURIComponent(editor.getSession().getValue());
+						var encoded = editor.getSession().getValue();
 						model.content = encoded;
 						action.copyToJson();
 					}
@@ -131,7 +134,8 @@ var htmltojson = (() => {
 					action.copyToJson();
 				}
 			} else {
-				var encoded = encodeURIComponent(editor.getSession().getValue());
+				//var encoded = encodeURIComponent(editor.getSession().getValue());
+				var encoded = editor.getSession().getValue();
 				model.content = encoded;
 			}
 			action.updatePreview();

@@ -1,19 +1,16 @@
-extends /_base
-
+extends /layouts/_base.misitioba.static
 
 block header
-	include views/_header.html
-	
-	div.center-block.text-right.container.relative
-		ul.ba-grid-languages
-			each val, key in lang.languages()
-				li
-					- var url = "_G_ROOT" + key;
-					a(href=url)= val
-	
+	include /partials/_ba.header.jade
 block nav
+	include /partials/_ba.nav.jade
+block header-bottom
+	output.hidden-xs
+		include /_slider.html
 block content
-	include views/_home.jade
+	include /_home.jade
+block footer
+	include /partials/_ba.footer.jade
 
 
 

@@ -6,6 +6,7 @@
 		"title": "Intro",
 		"filename": "intro.json"
 	},
+	"posts":[],
 	"reviews": [{
 		"author": "Anaïs",
 		"date": "01 January 2016",
