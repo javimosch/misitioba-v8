@@ -291,14 +291,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/assets/index.jade",
-			"settings":
-			{
-				"buffer_size": 279,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -558,13 +550,15 @@
 	"expanded_folders":
 	[
 		"/home/javi/git/project-misitioba",
-		"/home/javi/git/project-misitioba/res/works",
-		"/home/javi/git/project-misitioba/src",
-		"/home/javi/git/project-misitioba/src/assets",
-		"/home/javi/git/project-misitioba/src/assets/blog/posts"
+		"/home/javi/git/project-misitioba/res",
+		"/home/javi/git/project-misitioba/res/img",
+		"/home/javi/git/project-misitioba/res/projects",
+		"/home/javi/git/project-misitioba/res/works"
 	],
 	"file_history":
 	[
+		"/home/javi/git/project-misitioba/.gitignore",
+		"/home/javi/git/project-misitioba/src/assets/index.jade",
 		"/home/javi/git/project-misitioba/gulpfile.js",
 		"/home/javi/git/project-misitioba/src/styles/ba-works.scss",
 		"/home/javi/git/project-misitioba/src/assets/views/_works.jade",
@@ -574,7 +568,6 @@
 		"/home/javi/git/project-misitioba/dist/files/i18n/language.json",
 		"/home/javi/git/project-misitioba/tools/jsonlang.js",
 		"/home/javi/git/project-misitioba/language.json",
-		"/home/javi/git/project-misitioba/src/assets/index.jade",
 		"/home/javi/git/project-misitioba/src/assets/views/partials/_ba.footer.jade",
 		"/home/javi/git/project-misitioba/src/assets/_data.json",
 		"/home/javi/git/project-misitioba/src/assets/views/_projects.jade",
@@ -602,7 +595,6 @@
 		"/home/javi/git/project-misitioba/package.json",
 		"/home/javi/git/project-servicity/src/vendor/vendor.js",
 		"/home/javi/git/project-servicity/package.json",
-		"/home/javi/git/project-misitioba/.gitignore",
 		"/home/javi/git/project-game/style.css",
 		"/home/javi/git/project-game/index.html",
 		"/home/javi/git/project-game/game.js",
@@ -910,37 +902,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/assets/index.jade",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 279,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								130,
-								130
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/Jade/Syntaxes/Jade.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -1004,6 +967,10 @@
 		"last_filter": "",
 		"selected_items":
 		[
+			[
+				".git",
+				".gitignore"
+			],
 			[
 				"langua",
 				"dist/files/i18n/language.json"
@@ -1419,7 +1386,7 @@
 		[
 			[
 				"",
-				"~/git/project-pierre/inspectors/inspectors.sublime-project"
+				"~/git/project-pierre/diag-project.sublime-project"
 			]
 		],
 		"width": 380.0
