@@ -8,7 +8,6 @@
 
 .ba header > div{
 	height: 150px;
-    padding: 0px 100px;
     display: inline-flex;
     width:100%;
 }
@@ -19,18 +18,38 @@
     }
 }
 
+@media (max-width: 1200px) { 
+    .ba header ul.logo{
+        display: block;
+    }
+    .ba header ul.logo > li{
+        display: block!important;
+        width: 200px;
+        margin:0 auto;
+    }
+    .ba header ul.logo a.logo{
+        display: inline-flex;
+        width: 200px;
+    }
+    .ba header ul.logo h1{
+        line-height: 90px!important;
+    }
+}
+
 .ba header ul.logo > li{
 	display: inherit;
 }
 
 .ba header ul.logo a.logo{
-    display: inline-flex;
-    height: 150px;
+    /*display: inline-flex;*/
+    height: 60px;
+    margin: auto 0px;
 }
 .ba header ul.logo img.logo{
     width: 60px;
     margin: auto auto;
     height: 60px; 
+    margin-top: 10px;
 }
 
 .ba header ul.logo .title{

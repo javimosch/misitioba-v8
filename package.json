@@ -78,6 +78,7 @@
     "mailgun-js": "^0.7.7",
     "mongodb": "^2.1.4",
     "mongoose": "^4.3.7",
-    "parse": "^1.6.14"
+    "parse": "^1.6.14",
+    "vinyl-ftp": "^0.4.5"
   }
 }

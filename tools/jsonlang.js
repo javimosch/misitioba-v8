@@ -8,7 +8,7 @@ var lang = function(src, defaultLang) {
     //	obj = objs[src];
     //} else {
     function read() {
-        console.log('Reading language file at ' + src);
+        //console.log('Reading language file at ' + src);
         obj = jsonfile.readFileSync(src);
     }
     read();

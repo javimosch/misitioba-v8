@@ -235,7 +235,7 @@ try {
         server: function() {
             browserSync.init({
                 server: "./dist",
-                port: 8080,
+                port: 3000,
                 open: false
             });
         },
@@ -322,10 +322,10 @@ try {
 
 
     var JADE = (function(jadeLocals, jadeConfig) {
-        console.log('JADE');
+        //console.log('JADE');
         var _lang = lang(jadeConfig.languageFile, jadeConfig.languageDefault);
         var _tasks = [];
-        console.log('JADE#2');
+        //console.log('JADE#2');
         var buildSrc = ['src/**/index.jade'];
         var watchSrc = ['src/assets/**/*.jade', 'src/assets/**/*.html', 'src/assets/**/*.json'];
         var filterIndexFiles = filter(['**/index.jade']);
@@ -372,27 +372,27 @@ try {
                     ))
                     //.pipe(jadeInheritance({basedir: 'src'}))                    
                     //.pipe(filterIndexFiles)
-                    .pipe(using({ prefix: 'Reading locals: ' }))
+                    //.pipe(using({ prefix: 'Reading locals: ' }))
                     .pipe(plumber())
                     .pipe(data(function(file, handle) {
                         var filePath = file.path.replace(path.basename(file.path), '_data.json');
-                        console.log(path.basename(file.path) + ': requiring ', filePath);
+                        //console.log(path.basename(file.path) + ': requiring ', filePath);
                         if (require.cache[filePath]) {
                             delete require.cache[filePath];
                         }
                         try {
                             var _data = require(filePath);
-                            console.log('locals extended with: ' + Object.keys(_data));
+                            //console.log('locals-extended: ' + Object.keys(_data));
                             _locals = _.extend(_locals, _data);
-                            handle(undefined, undefined);
                         } catch (e) {
-                            console.log(path.basename(file.path) + ' (no-data)', e);
-                            handle(undefined, undefined);
+                            //console.log(path.basename(file.path) + ' (no-data)', e);
+                            //handle(undefined, undefined);
                         }
+                        handle(undefined, undefined);
                     }))
                     .pipe(plumber.stop())
-                    .pipe(using({ prefix: "About to compile: " }))
-                    .pipe(plumber())
+                    //.pipe(using({ prefix: "About to compile: " }))
+                    //.pipe(plumber())
                     .pipe(jade((() => {
                         var opts = {
                             basedir: _locals.basedir,
@@ -401,8 +401,8 @@ try {
 
                         return opts;
                     })()))
-                    .pipe(plumber.stop())
-                    .pipe(using({ prefix: "Compiled: " }))
+                    //.pipe(plumber.stop())
+                    //.pipe(using({ prefix: "Compiled: " }))
                     .on('error', function(err) {
                         gutil.log(err.message);
                         browserSync.notify("Jade Error!");
@@ -415,16 +415,28 @@ try {
                     r = r.pipe(replace(k, GLOBALS[k]));
                 });
 
-                r = r.pipe(gcallback(function() {
-                    //gutil.log('language replaced', 'Really it did', gutil.colors.magenta('123'));
-                    _langTaskInstance.reload();
-                }));
 
+                //r = r.pipe(plumber())
+                //r = r.pipe(gcallback(function() {
+                  //  gutil.log('language-reload');
+                    //_langTaskInstance.reload();
+                //}));
+                //r = r.pipe(plumber.stop())
+
+                r = r.pipe(plumber())
                 _langTaskInstance.inyect(r, replace);
+                r = r.pipe(plumber.stop())
 
 
-
-                r = r.pipe(using({ prefix: "Copied: " }))
+                r = r.pipe(plumber())
+                //r = r.pipe(using({ prefix: "Copied: " }))
+                .pipe(rename(function(str) {
+                    str.dirname = str.dirname.replace('assets','');
+                    str.dirname = str.dirname.replace('//','/');
+                    console.log('Compiling '+str.dirname);
+                    return str;
+                }))
+                r = r.pipe(plumber.stop())
                 r = r.pipe(gulp.dest(dest))
                     //.pipe(notify("[jade:success]"))
                     .pipe(
@@ -438,6 +450,8 @@ try {
             _tasks.push(name);
             return task;
         }
+
+        
 
         function reload() {
             return through2(function(chunk, enc, callback) {
