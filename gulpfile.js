@@ -119,9 +119,9 @@ try {
                 gulp.run('build:assets');
             });
 
-            //watch(['src/assets/**/*.jade', 'src/assets/**/*.html', 'src/assets/**/*.json'], function() {
-            //    gulp.run('build:jade');
-            //});
+            watch(['src/assets/**/*.jade', 'src/assets/**/*.html', 'src/assets/**/*.json'], function() {
+                gulp.run('build:jade');
+            });
 
             watch([jadeConfig.languageFile], function() {
                 events.onLanguageFileChanged.forEach(function(cb) {
@@ -235,7 +235,7 @@ try {
         server: function() {
             browserSync.init({
                 server: "./dist",
-                port: 3000,
+                port: 3401,
                 open: false
             });
         },
@@ -333,6 +333,7 @@ try {
         function newTask(name, src, dest, language, isWatch) {
             var _langTaskInstance = lang(jadeConfig.languageFile, language);
 
+            isWatch = false;//temporal disabled
             //events.onLanguageFileChanged.push(function() {
             //_langTaskInstance.reload();
             //});
